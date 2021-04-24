@@ -1,0 +1,114 @@
+" Initialize plugin system
+call plug#begin('~/.local/share/nvim/plugged')
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Git
+Plug 'tpope/vim-fugitive'
+" Surround
+Plug 'tpope/vim-surround'
+" Vinegar
+Plug 'tpope/vim-vinegar'
+" Rhubarb
+Plug 'tpope/vim-rhubarb'
+" Initialize plugin system
+call plug#end()
+
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Show signcolumn
+set signcolumn=yes
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" [neoclide/coc.nvim] extensions
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-docker',
+  \ 'coc-emmet',
+  \ 'coc-git',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-omnisharp',
+  \ 'coc-python',
+  \ 'coc-scssmodules',
+  \ 'coc-snippets',
+  \ 'coc-webpack',
+  \ 'coc-yaml'
+\ ]
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Configs
+set number number   " add line numbers
+set list list       " show whitespace
+set showmatch       " show matching brackets
+set mouse=v         " middle-click paste with mouse
+set hlsearch        " highlight search results
+set tabstop=4       " number of columns occupied by a tab character
+set softtabstop=4   " see multiple spaces as tabstops so <BS> does the right thing
+set expandtab       " converts tabs to white space
+set shiftwidth=4    " width for autoindents
+set autoindent      " indent a new line the same amount as the line just typed
